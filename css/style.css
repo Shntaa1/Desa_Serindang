@@ -975,26 +975,49 @@ footer {
         padding: 0 5%;
     }
 
-    .menu-btn {
-        display: block;
-    }
+/* MENU NAVIGASI HP */
+.menu-btn {
+    display: none;
+}
 
-    nav {
-        display: none;
-        position: absolute;
-        top: 80px;
-        left: 0;
-        width: 100%;
-        padding: 25px;
-        background: white;
-        flex-direction: column;
-        gap: 16px;
-        box-shadow: 0 15px 25px rgba(0,0,0,.08);
-    }
+nav {
+    display: flex;
+    position: static;
+    width: auto;
+    padding: 0;
+    background: transparent;
+    flex-direction: row;
+    gap: 5px;
+    box-shadow: none;
 
-    nav.show {
-        display: flex;
-    }
+    /* Bisa digeser ke samping */
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    flex: 1;
+    justify-content: flex-start;
+
+    /* Scroll halus di HP */
+    -webkit-overflow-scrolling: touch;
+
+    /* Sembunyikan scrollbar */
+    scrollbar-width: none;
+}
+
+nav::-webkit-scrollbar {
+    display: none;
+}
+
+nav a {
+    flex-shrink: 0;
+    white-space: nowrap;
+    padding: 8px 10px;
+    font-size: 13px;
+}
+
+nav.show {
+    display: flex;
+}
 
     nav a.active::after {
         display: none;
