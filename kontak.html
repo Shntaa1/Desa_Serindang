@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontak Desa Serindang</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<header class="navbar">
+
+    <a href="index.html" class="logo">
+        <span>🌿</span>
+        <div>
+            <strong>DESA SERINDANG</strong>
+            <small>Kecamatan Tebas • Kabupaten Sambas</small>
+        </div>
+    </a>
+
+    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+
+    <nav id="navMenu">
+        <a href="index.html">Beranda</a>
+        <a href="profil.html">Profil</a>
+        <a href="pemerintahan.html">Pemerintahan</a>
+        <a href="potensi.html">Potensi</a>
+        <a href="berita.html">Berita</a>
+        <a href="galeri.html">Galeri</a>
+        <a href="sejarah.html">Sejarah</a>
+        <a class="active" href="kontak.html">Kontak</a>
+    </nav>
+
+</header>
+
+
+<section class="page-title">
+
+    <span>KONTAK</span>
+
+    <h1>Desa Serindang</h1>
+
+    <p>
+        Kecamatan Tebas • Kabupaten Sambas
+    </p>
+
+</section>
+
+
+<section class="section">
+
+    <div class="contact-grid">
+
+
+        <div class="contact-info">
+
+            <span class="gold-title">
+                INFORMASI WILAYAH
+            </span>
+
+            <h2 class="large-title">
+                Mari mengenal
+                lokasi Desa Serindang.
+            </h2>
+
+
+            <div class="contact-item">
+
+                <div>📍</div>
+
+                <section>
+
+                    <small>ALAMAT</small>
+
+                    <p>
+                        Desa Serindang,
+                        Kecamatan Tebas,
+                        Kabupaten Sambas,
+                        Kalimantan Barat.
+                    </p>
+
+                </section>
+
+            </div>
+
+
+            <div class="contact-item">
+
+                <div>🌳</div>
+
+                <section>
+
+                    <small>DUSUN</small>
+
+                    <p>
+                        Dusun Rindang dan Dusun Rimbun.
+                    </p>
+
+                </section>
+
+            </div>
+
+
+            <div class="contact-item">
+
+                <div>🍊</div>
+
+                <section>
+
+                    <small>POTENSI UTAMA</small>
+
+                    <p>
+                        Padi dan Jeruk Pontianak.
+                    </p>
+
+                </section>
+
+            </div>
+
+        </div>
+
+
+        <form class="contact-form"
+              onsubmit="sendMessage(event)">
+
+            <h2>Kirim Pesan</h2>
+
+            <label>Nama</label>
+
+            <input
+                type="text"
+                id="nama"
+                placeholder="Nama kamu"
+                required>
+
+
+            <label>Email</label>
+
+            <input
+                type="email"
+                id="email"
+                placeholder="nama@email.com"
+                required>
+
+
+            <label>Pesan</label>
+
+            <textarea
+                id="pesan"
+                rows="6"
+                placeholder="Tulis pesan..."
+                required></textarea>
+
+
+            <button type="submit" class="btn">
+                Kirim Pesan →
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+
+<section class="map-box">
+
+    <div class="map-content">
+
+        <span>📍</span>
+
+        <h2>Desa Serindang</h2>
+
+        <p>
+            Kecamatan Tebas • Kabupaten Sambas
+        </p>
+
+        <a
+            href="https://www.google.com/maps/search/Desa+Serindang+Tebas+Sambas"
+            target="_blank"
+            class="btn">
+
+            Buka Google Maps →
+
+        </a>
+
+    </div>
+
+</section>
+
+
+<footer>
+
+    <div class="footer-main">
+
+        <div>
+            <h2>🌿 Desa Serindang</h2>
+
+            <p>
+                Kecamatan Tebas, Kabupaten Sambas,
+                Kalimantan Barat.
+            </p>
+
+        </div>
+
+        <div class="footer-links">
+
+            <h3>Menu</h3>
+
+            <a href="index.html">Beranda</a>
+            <a href="profil.html">Profil</a>
+            <a href="potensi.html">Potensi</a>
+            <a href="sejarah.html">Sejarah</a>
+
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        © 2026 Desa Serindang
+    </div>
+
+</footer>
+
+
+<button id="topBtn" onclick="scrollTopPage()">↑</button>
+
+<script src="js/script.js"></script>
+
+</body>
+  </html>
