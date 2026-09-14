@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html><head><base target="_top"><meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+:root{--green:#164c38;--dark:#08271b;--gold:#c59b52;--cream:#faf9f4;--soft:#edf3ee}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:var(--cream);color:#56665d}
+.wrap{max-width:1100px;margin:auto;padding:25px}.card{background:white;border-radius:20px;padding:25px;box-shadow:0 8px 30px rgba(0,0,0,.06);margin-bottom:20px}
+h2,h3{color:var(--green)}input,select,textarea{width:100%;padding:11px;border:1px solid #dce5df;border-radius:9px;font:inherit;margin:6px 0 12px}button{border:0;border-radius:10px;padding:11px 16px;background:var(--green);color:white;cursor:pointer}.logout{float:right;background:#777}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.stat{background:var(--soft);padding:18px;border-radius:14px}.stat b{display:block;font-size:25px;color:var(--green)}
+.tablewrap{overflow:auto}table{width:100%;border-collapse:collapse;min-width:760px}th,td{padding:11px;border-bottom:1px solid #eee;text-align:left;font-size:13px}th{background:var(--soft);color:var(--green)}
+.badge{padding:5px 9px;border-radius:20px;background:var(--soft);font-size:11px}.hidden{display:none}
+@media(max-width:700px){.grid{grid-template-columns:1fr 1fr}.wrap{padding:15px}}
+</style></head>
+<body>
+<div class="wrap">
+  <div id="login" class="card">
+    <h2>🔐 Login Admin</h2>
+    <label>Username</label><input id="user" autocomplete="username">
+    <label>Password</label><input id="pass" type="password" autocomplete="current-password">
+    <button onclick="login()">Masuk</button>
+    <p id="loginMsg"></p>
+  </div>
+
+  <div id="dashboard" class="hidden">
+    <div class="card">
+      <button class="logout" onclick="logout()">Keluar</button>
+      <h2>📋 Admin Pengaduan Desa Serindang</h2>
+      <div class="grid">
+        <div class="stat">Total<b id="total">0</b></div>
+        <div class="stat">Menunggu<b id="menunggu">0</b></div>
+        <div class="stat">Diproses<b id="diproses">0</b></div>
+        <div class="stat">Selesai<b id="selesai">0</b></div>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Daftar Pengaduan</h3>
+      <div class="tablewrap"><table><thead><tr><th>ID</th><th>Tanggal</th><th>Nama</th><th>Kategori</th><th>Status</th><th>Aksi</th></tr></thead><tbody id="rows"></tbody></table></div>
+    </div>
+    <div id="detail" class="card hidden">
+      <h3>Detail Pengaduan</h3>
+      <div id="detailText"></div>
+      <label>Status</label>
+      <select id="status"><option>Menunggu</option><option>Diproses</option><option>Selesai</option></select>
+      <label>Tanggapan Admin</label>
+      <textarea id="tanggapan" rows="5" placeholder="Tulis tanggapan untuk warga..."></textarea>
+      <button onclick="simpan()">Simpan Tanggapan</button>
+      <p id="saveMsg"></p>
+    </div>
+  </div>
+</div>
+<script>
+let token='',selectedId='',data=[];
+function login(){
+  document.getElementById('loginMsg').textContent='Memeriksa...';
+  google.script.run.withSuccessHandler(r=>{
+    if(!r.success){document.getElementById('loginMsg').textContent=r.message;return}
+    token=r.token;document.getElementById('login').classList.add('hidden');document.getElementById('dashboard').classList.remove('hidden');load();
+  }).loginAdmin(document.getElementById('user').value,document.getElementById('pass').value);
+}
+function load(){
+  google.script.run.withSuccessHandler(r=>{data=r;render();stats()}).getComplaints(token);
+}
+function stats(){google.script.run.withSuccessHandler(r=>{['total','menunggu','diproses','selesai'].forEach(k=>document.getElementById(k).textContent=r[k])}).getStatistics(token)}
+function render(){
+  document.getElementById('rows').innerHTML=data.map(x=>`<tr><td>${x.id}</td><td>${x.tanggal}</td><td>${esc(x.nama)}</td><td>${esc(x.kategori)}</td><td><span class="badge">${x.status}</span></td><td><button onclick="detail('${x.id}')">Lihat</button></td></tr>`).join('');
+}
+function detail(id){
+  const x=data.find(a=>a.id===id);selectedId=id;
+  document.getElementById('detail').classList.remove('hidden');
+  document.getElementById('detailText').innerHTML='<b>ID:</b> '+x.id+'<br><b>Nama:</b> '+esc(x.nama)+'<br><b>No HP:</b> '+esc(x.nohp)+'<br><b>Kategori:</b> '+esc(x.kategori)+'<br><br><b>Pengaduan:</b><br>'+esc(x.pengaduan);
+  document.getElementById('status').value=x.status;document.getElementById('tanggapan').value=x.tanggapan||'';window.scrollTo(0,document.body.scrollHeight);
+}
+function simpan(){
+  google.script.run.withSuccessHandler(()=>{document.getElementById('saveMsg').textContent='Tanggapan berhasil disimpan.';load()}).withFailureHandler(e=>document.getElementById('saveMsg').textContent=e.message).respondComplaint(token,selectedId,document.getElementById('status').value,document.getElementById('tanggapan').value);
+}
+function logout(){token='';location.reload()}
+function esc(s){return String(s||'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]) )}
+</script></body></html>
