@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pengaduan Pelayanan | Desa Serindang</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="navbar">
+    <a href="index.html" class="logo">
+        <span>🌿</span>
+        <div>
+            <strong>DESA SERINDANG</strong>
+            <small>Kecamatan Tebas • Kabupaten Sambas</small>
+        </div>
+    </a>
+    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+    <nav id="navMenu">
+        <a href="index.html">Beranda</a>
+        <a href="profil.html">Profil</a>
+        <a href="pemerintahan.html">Pemerintahan</a>
+        <a href="potensi.html">Potensi</a>
+        <a href="berita.html">Berita</a>
+        <a href="galeri.html">Galeri</a>
+        <a href="sejarah.html">Sejarah</a>
+        <a href="kontak.html">Kontak</a>
+        <a class="active btn-pengaduan" href="pengaduan.html">📢 Pengaduan</a>
+    </nav>
+</header>
+
+<section class="page-title">
+    <span>LAYANAN MASYARAKAT</span>
+    <h1>Pengaduan Pelayanan</h1>
+    <p>Sampaikan keluhan, kritik, atau masukan untuk pelayanan Desa Serindang.</p>
+</section>
+
+<section class="section">
+    <div class="pengaduan-intro">
+        <span class="gold-title">PENGADUAN DESA SERINDANG</span>
+        <h2>Kami mendengarkan<br>masukan masyarakat.</h2>
+        <p>Silakan isi pengaduan dengan data yang benar. Simpan ID pengaduan yang diberikan agar dapat digunakan untuk mengecek perkembangan laporan.</p>
+    </div>
+
+    <div class="pengaduan-wrap">
+        <!-- Ganti URL di bawah setelah Web App Apps Script selesai dibuat -->
+        <iframe
+            class="pengaduan-frame"
+            src="https://script.google.com/macros/s/AKfycbwQqQ1aDOo26p8mR0Qq0S1QJdhSkfnpdOk1OfIBuPVL9AlAsOfnIXOOdhybhfTKwgatiA/exec"
+            title="Form Pengaduan Desa Serindang"
+            loading="lazy">
+        </iframe>
+    </div>
+
+    <div class="pengaduan-note">
+        <strong>📌 Catatan:</strong> Setelah mengirim pengaduan, simpan ID pengaduan. ID tersebut digunakan untuk melihat status dan tanggapan dari admin Desa Serindang.
+    </div>
+</section>
+
+<footer>
+    <div class="footer-main">
+        <div>
+            <h2>🌿 Desa Serindang</h2>
+            <p>Kecamatan Tebas, Kabupaten Sambas, Kalimantan Barat.</p>
+        </div>
+        <div class="footer-links">
+            <h3>Menu</h3>
+            <a href="index.html">Beranda</a>
+            <a href="profil.html">Profil</a>
+            <a href="potensi.html">Potensi</a>
+            <a href="sejarah.html">Sejarah</a>
+        </div>
+    </div>
+    <div class="footer-bottom">© 2026 Desa Serindang • Website Profil Desa</div>
+</footer>
+
+<button id="topBtn" onclick="scrollTopPage()">↑</button>
+<script src="js/script.js"></script>
+</body>
+</html>
