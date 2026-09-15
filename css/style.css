@@ -1145,3 +1145,23 @@ nav.show {
     transform: translateY(-2px);
     opacity: 0.9;
 }
+/* ================= TOMBOL ADMIN ================= */
+
+.btn-admin {
+    display: inline-block;
+    padding: 10px 16px;
+    margin-left: 8px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    color: #fff;
+    background: #315c3a;
+    border: 1px solid #d4af37;
+    transition: 0.3s ease;
+}
+
+.btn-admin:hover {
+    background: #d4af37;
+    color: #315c3a;
+    transform: translateY(-2px);
+}
