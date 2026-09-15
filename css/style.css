@@ -1154,14 +1154,13 @@ nav.show {
     border-radius: 8px;
     text-decoration: none;
     font-weight: 600;
-    color: #fff;
+    color: white;
     background: #315c3a;
     border: 1px solid #d4af37;
-    transition: 0.3s ease;
+    transition: 0.3s;
 }
 
 .btn-admin:hover {
     background: #d4af37;
     color: #315c3a;
-    transform: translateY(-2px);
 }
