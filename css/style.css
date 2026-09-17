@@ -1164,3 +1164,38 @@ nav.show {
     background: #d4af37;
     color: #315c3a;
 }
+
+/* ================= FORM PENGADUAN ================= */
+
+.pengaduan-wrapper {
+    width: 100%;
+    max-width: 1000px;
+    margin: 35px auto;
+    padding: 0;
+}
+
+.pengaduan-frame {
+    display: block;
+    width: 100%;
+    min-height: 750px;
+    height: 850px;
+    border: none;
+    outline: none;
+    background: transparent;
+    overflow: hidden;
+}
+
+/* Tampilan HP */
+@media (max-width: 768px) {
+    .pengaduan-wrapper {
+        width: 100%;
+        margin: 25px auto;
+    }
+
+    .pengaduan-frame {
+        width: 100%;
+        min-height: 850px;
+        height: 950px;
+        border: none;
+    }
+}
